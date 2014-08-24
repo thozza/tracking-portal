@@ -1,18 +1,33 @@
 {%  extends "base.html" %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Tracker Home</h2>
-            <ul>
-                <li><a href={% url 'tracker:mtype' %}>Meter Types</a></li>
-                <li><a href={% url 'tracker:meter' %}>Meters</a></li>
-                <li><a href={% url 'tracker:mobject' %}>Objects</a></li>
-            </ul>
+    <div class="col-md-2">
+        <h2>Tracker Home</h2>
+        <ul class="nav nav-pills nav-stacked">
+            <li><a>Meter Types</a></li>
+            <li><a>Meters</a></li>
+            <li><a>Objects</a></li>
+        </ul>
+    </div>
+    <div class="col-md-10">
+        {# Panel for each object #}
+        {% for object in objects_list %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ object.name }}</h3>
+                </div>
+                <div class="panel-body">
+                    {# Details for specific object #}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Panel title</h3>
+            </div>
+            <div class="panel-body">
+                Panel content
+            </div>
         </div>
-    <div class="col-md-12">
-
-        </div>
-
     </div>
 {% endblock %}
