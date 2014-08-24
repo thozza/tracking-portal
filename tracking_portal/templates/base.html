@@ -1,0 +1,52 @@
+{% extends "core.html" %}
+{% load staticfiles %}
+
+{% block body %}
+    {# navigation bar #}
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            {#  Navigation bar header #}
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tracking-portal-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url "tracker:home" %}">Tracking System</a>
+            </div>
+            <div class="collapse navbar-collapse" id="tracking-portal-navbar-collapse-1">
+                {# Navigation bar itself with menu items #}
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="{% url "tracker:home" %}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{% url "tracker:meter" %}">Meters</a>
+                    </li>
+                    <li>
+                        <a href="{% url "tracker:mobject" %}">Measurement Objects</a>
+                    </li>
+                </ul>
+                {# The utility section - user, status, ... #}
+                <!--<ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span>
+                            User1
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>list item</li>
+                        </ul>
+                    </li>
+                </ul>-->
+            </div>
+        </div> {#  container-luid #}
+    </nav>
+
+    {# The content of the page will be filled into 'content' block #}
+    <div class="container-fluid">
+        {% block content %}
+        {% endblock content %}
+    </div>
+{% endblock body %}

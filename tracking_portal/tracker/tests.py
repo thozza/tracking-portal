@@ -1,3 +1,7 @@
 from django.test import TestCase
 
-# Create your tests here.
+
+class MeasurementObjectTests(TestCase):
+
+    def test_case1(self):
+        pass

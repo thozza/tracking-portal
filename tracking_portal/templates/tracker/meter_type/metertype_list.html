@@ -1,0 +1,30 @@
+{%  extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Meter Types</h2>
+            <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
+                <div class="table-responsive">
+                    <table class="datatable table table-striped table-bordered no-footer" role="grid">
+                        <thead>
+                        <tr role="row">
+                            <th>Name</th>
+                            <th>Unit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for mtype in object_list %}
+                            <tr>
+                                <td><a href="{% url 'tracker:mtype_detail' mtype.id %}">{{ mtype.name }}</a></td>
+                                <td>{{ mtype.unit_long }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
