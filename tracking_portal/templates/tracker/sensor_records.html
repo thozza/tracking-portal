@@ -1,0 +1,40 @@
+{%  extends "base.html" %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Records from {{ sensor.get_type_string }} Sensor <b>{{ sensor.id_on_node }}</b> on Node <b>{{ sensor.node.address }}</b></h1>
+    </div>
+    <div class="col-md-6">
+        {% if record_list %}
+            {# table with records #}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date and Time</th>
+                            <th>Value</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in record_list %}
+                            <tr>
+                                <td>{{ record.timestamp }}</td>
+                                <td>{{ record.value }}</td>
+                                {# the action field #}
+                                <td>
+                                    <form action="{% url "tracker:record_delete" record.pk %}" method="get">
+                                        {% csrf_token %}
+                                        <input type="submit" class="btn btn-danger btn-xs" value="Delete"/>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        {% else %}
+            <div class="alert alert-info">
+                <p>There are no records from the selected sensor!</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

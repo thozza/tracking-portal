@@ -57,12 +57,36 @@ class NodeCreateView(CreateView):
     template_name_suffix = '_create'
     fields = ['address', 'firmware_name', 'firmware_version']
 
+
 class NodeDeleteView(DeleteView):
     """
     View for deleting a node
     """
     model = Node
     success_url = reverse_lazy('tracker:node_list')
+
+
+class RecordDeleteView(DeleteView):
+    """
+    View for deleting a Record
+    """
+    model = Record
+    success_url = reverse_lazy('tracker:sensor_records')
+
+
+class SensorRecordsView(TemplateView):
+    """
+    View listing all Records for a particular Sensor
+    """
+    template_name = 'tracker/sensor_records.html'
+
+    def get_context_data(self, **kwargs):
+        sensor_pk = kwargs['sensor_pk']
+        context = super(SensorRecordsView, self).get_context_data(**kwargs)
+
+        context['sensor'] = sensor = Sensor.objects.get(pk=sensor_pk)
+        context['record_list'] = sensor.record_set.all()
+        return context
 
 
 class HomeView(TemplateView):

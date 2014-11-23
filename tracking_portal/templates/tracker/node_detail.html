@@ -29,6 +29,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Type</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +37,9 @@
                             <tr>
                                 <td>{{ sensor.id_on_node }}</td>
                                 <td>{{ sensor.get_type_string }}</td>
+                                <td>
+                                    <a class="btn btn-xs btn-info" href="{% url "tracker:sensor_records" sensor_pk=sensor.pk %}">Records</a>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>

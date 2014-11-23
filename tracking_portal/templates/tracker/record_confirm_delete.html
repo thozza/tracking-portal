@@ -1,0 +1,16 @@
+{%  extends "base.html" %}
+
+{% block content %}
+    <div class="col-md-6 col-md-offset-3">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="alert alert-danger">
+            <p>Are you sure you want to delete the Record:<br>Value <b>{{ object.value }}</b> from
+                <b>{{ object.timestamp }}</b> recorded from Sensor <b>{{ object.sensor.id_on_node }}</b> on Node
+                <b>{{ object.sensor.node.address }}</b>?</p>
+        </div>
+        <input type="submit" class="btn btn-danger" value="Confirm"/>
+        <a href="{% url "tracker:sensor_records" sensor_pk=object.sensor.pk %}" class="btn btn-success">Cancel</a>
+    </form>
+    </div>
+{% endblock %}
