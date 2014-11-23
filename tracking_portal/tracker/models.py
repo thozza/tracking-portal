@@ -20,7 +20,6 @@
 # Authors: Tomas Hozza <thozza@redhat.com>
 
 from django.db import models
-from django.core.urlresolvers import reverse
 from django_enumfield import enum
 
 
