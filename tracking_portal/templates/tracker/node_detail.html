@@ -34,8 +34,8 @@
                     <tbody>
                         {% for sensor in object.sensor_set.all %}
                             <tr>
-                                <th>{{ sensor.id_on_node }}</th>
-                                <th>{{ sensor.get_type_string }}</th>
+                                <td>{{ sensor.id_on_node }}</td>
+                                <td>{{ sensor.get_type_string }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
