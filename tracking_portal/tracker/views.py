@@ -57,6 +57,9 @@ class NodeCreateView(CreateView):
     template_name_suffix = '_create'
     fields = ['address', 'firmware_name', 'firmware_version']
 
+    def get_success_url(self):
+        return reverse_lazy('tracker:node_detail', kwargs={'pk': self.object.pk})
+
 
 class NodeDeleteView(DeleteView):
     """
