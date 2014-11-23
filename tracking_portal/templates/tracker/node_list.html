@@ -11,7 +11,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th>Address</th>
                             <th>FW Name</th>
                             <th>FW Version</th>
                             <th># of Sensors</th>
@@ -21,7 +21,7 @@
                     <tbody>
                         {% for object in object_list %}
                             <tr>
-                                <td>{{ object.id }}</td>
+                                <td>{{ object.address }}</td>
                                 <td>{{ object.firmware_name|default:"-" }}</td>
                                 <td>{{ object.firmware_version|default:"-" }}</td>
                                 <td>{{ object.sensor_set.all.count }}</td>
