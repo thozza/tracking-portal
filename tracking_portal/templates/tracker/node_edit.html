@@ -1,0 +1,16 @@
+{%  extends "base.html" %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Nodes List</h1>
+    </div>
+    <div class="col-md-6">
+        {% if object_list %}
+            {# table with nodes #}
+        {% else %}
+            {# warning that there are not nodes #}
+        {% endif %}
+    </div>
+    {# button to add new node? #}
+    
+{% endblock %}

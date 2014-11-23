@@ -1,0 +1,46 @@
+{%  extends "base.html" %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Nodes List</h1>
+    </div>
+    <div class="col-md-6">
+        <a class="btn btn-success btn-sm" href="{% url "tracker:node_add" %}">Add New Node</a>
+        {% if object_list %}
+            {# table with nodes #}
+                <table class="table table-striped" align="ce">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>FW Name</th>
+                            <th>FW Version</th>
+                            <th># of Sensors</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for object in object_list %}
+                            <tr>
+                                <th>{{ object.id }}</th>
+                                <th>{{ object.firmware_name|default:"-" }}</th>
+                                <th>{{ object.firmware_version|default:"-" }}</th>
+                                <th>{{ object.sensor_set.all.count }}</th>
+                                {# the action field #}
+                                <th>
+                                    <form action="{% url "tracker:node_delete" object.pk %}" method="get">
+                                        {% csrf_token %}
+                                        <a class="btn btn-default btn-xs" href="{% url "tracker:node_detail" object.pk %}">Details</a>
+                                        <input type="submit" class="btn btn-danger btn-xs" value="Delete"/>
+                                    </form>
+                                </th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        {% else %}
+            {# warning that there are not nodes #}
+        {% endif %}
+    </div>
+    {# button to add new node? #}
+    
+{% endblock %}

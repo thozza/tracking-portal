@@ -1,0 +1,14 @@
+{%  extends "base.html" %}
+
+{% block content %}
+    <div class="col-md-6 col-md-offset-3">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="alert alert-danger">
+            Are you sure you want to delete Node "{{ object.id }}"?
+        </div>
+        <input type="submit" class="btn btn-danger" value="Confirm"/>
+        <a href="{% url "tracker:node_list" %}" class="btn btn-success">Cancel</a>
+    </form>
+    </div>
+{% endblock %}

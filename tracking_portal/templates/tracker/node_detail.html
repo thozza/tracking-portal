@@ -1,0 +1,50 @@
+{%  extends "base.html" %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>Node Details</h1>
+    </div>
+    <div class="col-md-6">
+        <div class="page-header">
+            <h2>Node Info</h2>
+        </div>
+        <dl class="dl-horizontal">
+            <dt>Address</dt>
+            <dd>{{ object.address }}</dd>
+            <dt>Firmware name</dt>
+            <dd>{{ object.firmware_name|default:"-" }}</dd>
+            <dt>Firmware version</dt>
+            <dd>{{ object.firmware_version|default:"-" }}</dd>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <div class="page-header">
+            <h2>Sensors on Node</h2>
+        </div>
+        {# table with sensors on the Node #}
+        {% if object.sensor_set.all %}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sensor in object.sensor_set.all %}
+                            <tr>
+                                <th>{{ sensor.id_on_node }}</th>
+                                <th>{{ sensor.get_type_string }}</th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info" role="alert">
+                "There are no sensors on this node!"
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
