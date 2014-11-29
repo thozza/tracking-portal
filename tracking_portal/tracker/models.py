@@ -17,7 +17,7 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# Authors: Tomas Hozza <thozza@redhat.com>
+# Authors: Tomas Hozza <thozza@gmail.com>
 
 from django.db import models
 from django_enumfield import enum

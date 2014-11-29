@@ -17,9 +17,8 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-# Authors: Tomas Hozza <thozza@redhat.com>
+# Authors: Tomas Hozza <thozza@gmail.com>
 
-from django.http.response import HttpResponseRedirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import ListView, TemplateView, DetailView
